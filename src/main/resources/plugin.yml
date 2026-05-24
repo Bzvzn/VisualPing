@@ -1,0 +1,10 @@
+name: VisualPing
+version: '${version}'
+main: com.bzvzn.visualping.VisualPing
+api-version: '26.1.2'
+description: A visual ping system for players to highlight locations.
+author: Bzvzn
+commands:
+  pingcolor:
+    description: Change the color of your visual ping!
+    usage: /pingcolor <#HEXCODE>

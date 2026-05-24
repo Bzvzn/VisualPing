@@ -1,0 +1,26 @@
+# ========================================== #
+#           VisualPing Configuration         #
+# ========================================== #
+
+ping:
+  # Items to right click to use the ping
+  pointer-item: "STICK"
+  
+  # Max reach of the ping
+  max-distance: 50
+  
+  # Duration of visibility of the ping
+  duration-seconds: 5
+  
+  # Cooldown of ping
+  cooldown-seconds: 3
+  
+  # Standard color in hex code 
+  # Used when player did not configure his own color
+  default-color: "#FFAA00" # gold/orange
+  
+  # Heigtht of name over particles
+  text-height-offset: 1
+
+  # Size of the name text over ping
+  text-scale: 2.0
