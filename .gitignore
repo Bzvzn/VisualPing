@@ -1,12 +1,12 @@
 # Gradle
 .gradle/
 build/
-gradlew
-gradlew.bat
 
-# VS Code
+# IDEs (VS Code / Eclipse)
 .vscode/
 *.code-workspace
+bin/
 
 # Java
 *.class
+*.jar
