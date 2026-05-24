@@ -1,13 +1,13 @@
 # 📍 VisualPing
 
-A modern, highly performant, and database-free ping system for Minecraft Paper servers (1.26+). Inspired by modern AAA shooters, VisualPing allows players to visually mark locations and objects in the world for their teammates.
+A modern, highly performant, and database-free ping system for Minecraft Paper servers (26.1.2). Inspired by modern AAA shooters, VisualPing allows players to visually mark locations and objects in the world for their teammates.
 
 ## ✨ Features
 
 * **True Raytracing:** Pings stick exactly to the targeted wall or floor without clipping into blocks.
 * **Customizable Colors:** Every player can set their own personal ping color using a Hex Code.
 * **Database-Free (PDC):** All player data is stored extremely efficiently directly in the world's vanilla `PersistentDataContainer`. No SQLite/MySQL database required!
-* **Modern TextDisplays:** Uses the latest Minecraft text entities with JOML scaling, drop shadows, and "X-Ray" vision (pings are visible through walls).
+* **Modern TextDisplays:** Uses the latest Minecraft text entities with JOML scaling and drop shadows.
 * **Anti-Spam:** Built-in cooldown system to prevent ping spamming (bypass available for admins).
 * **Fully Configurable:** Duration, range, item, text size, and colors can all be adjusted in the config.
 
