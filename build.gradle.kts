@@ -2,7 +2,6 @@ plugins {
     java
 }
 
-
 group = "com.bzvzn"
 version = "1.0"
 description = "A visual ping system for players to highlight locations."
