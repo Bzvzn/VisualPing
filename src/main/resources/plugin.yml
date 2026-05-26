@@ -8,3 +8,8 @@ commands:
   pingcolor:
     description: Change the color of your visual ping!
     usage: /pingcolor <#HEXCODE>
+  pingreload:
+    description: Reload the VisualPing configuration.
+    usage: /pingreload
+    permission: visualping.reload
+    permission-message: §cYou do not have permission to execute this command.

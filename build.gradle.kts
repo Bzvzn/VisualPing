@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.bzvzn"
-version = "1.0"
+version = "1.1"
 description = "A visual ping system for players to highlight locations."
 
 repositories {

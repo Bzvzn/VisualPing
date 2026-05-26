@@ -29,10 +29,9 @@ public class PingColorCommand implements CommandExecutor {
         }
 
         String input = args[0];
-        NamespacedKey key = new NamespacedKey(VisualPing.getInstance(), "ping_color");
 
         if (input.equalsIgnoreCase("reset") || input.equalsIgnoreCase("clear")) {
-            player.getPersistentDataContainer().remove(key);
+            player.getPersistentDataContainer().remove(VisualPing.COLOR_KEY);
             player.sendMessage(Component.text("📍 Your ping color was reset!", NamedTextColor.GREEN));
             return true;
         }
@@ -50,7 +49,7 @@ public class PingColorCommand implements CommandExecutor {
         }
 
         // 4. Save the valid color to the PersistentDataContainer (PDC)
-        player.getPersistentDataContainer().set(key, PersistentDataType.STRING, input.toUpperCase());
+        player.getPersistentDataContainer().set(VisualPing.COLOR_KEY, PersistentDataType.STRING, input.toUpperCase());
 
         // 5. Send a success message, colored in their newly chosen color!
         TextColor customColor = TextColor.fromHexString(input);

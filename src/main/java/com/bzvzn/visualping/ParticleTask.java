@@ -27,21 +27,15 @@ public class ParticleTask extends BukkitRunnable {
 
     public ParticleTask(Player player, Location targetHitLocation) {
         this.playerUUID = player.getUniqueId();
-
         this.world = targetHitLocation.getWorld();
-        
         this.target = targetHitLocation.clone();
 
-        // 1. Calculate duration in server ticks (20 ticks = 1 second)
-        int seconds = VisualPing.getInstance().getConfig().getInt("ping.duration-seconds", 5);
-        this.maxTicks = seconds * 20;
+        this.maxTicks = VisualPing.durationSeconds * 20;
 
-        // 2. Fetch the player's custom color from the PersistentDataContainer (PDC)
-        String hexColor = VisualPing.getInstance().getConfig().getString("ping.default-color", "#FFAA00");
-        NamespacedKey colorKey = new NamespacedKey(VisualPing.getInstance(), "ping_color");
+        String hexColor = VisualPing.defaultColor;
         
-        if (player.getPersistentDataContainer().has(colorKey, PersistentDataType.STRING)) {
-            hexColor = player.getPersistentDataContainer().get(colorKey, PersistentDataType.STRING);
+        if (player.getPersistentDataContainer().has(VisualPing.COLOR_KEY, PersistentDataType.STRING)) {
+            hexColor = player.getPersistentDataContainer().get(VisualPing.COLOR_KEY, PersistentDataType.STRING);
         }
 
         // Convert the hex string (e.g., "#FF0000") into actual Color objects
@@ -52,16 +46,12 @@ public class ParticleTask extends BukkitRunnable {
         );
         TextColor kyoriColor = TextColor.fromHexString(hexColor);
         
-        // Define the particle size and color (1.5f is slightly larger than normal)
+
         this.dustOptions = new Particle.DustOptions(bukkitColor, 1.5f);
 
-        // 3. Spawn the new TextDisplay Entity
-        double heightOffset = VisualPing.getInstance().getConfig().getDouble("ping.text-height-offset", 1);
-        Location textLocation = this.target.clone().add(0, heightOffset, 0);
-
-        float textScale = (float) VisualPing.getInstance().getConfig().getDouble("ping.text-scale", 2.0);
+        Location textLocation = this.target.clone().add(0, VisualPing.textHeightOffset, 0);
         
-        // We use a lambda to configure the entity right as it spawns
+
         this.textDisplay = world.spawn(textLocation, TextDisplay.class, display -> {
             display.text(Component.text(player.getName()).color(kyoriColor));
             display.setBillboard(Display.Billboard.CENTER);
@@ -72,7 +62,7 @@ public class ParticleTask extends BukkitRunnable {
             display.setTransformation(new org.bukkit.util.Transformation(
                 new org.joml.Vector3f(),
                 new org.joml.AxisAngle4f(),
-                new org.joml.Vector3f(textScale, textScale, textScale),
+                new org.joml.Vector3f(VisualPing.textScale, VisualPing.textScale, VisualPing.textScale),
                 new org.joml.AxisAngle4f()
             ));
         });
@@ -85,9 +75,9 @@ public class ParticleTask extends BukkitRunnable {
             return;
         }
 
-        world.spawnParticle(Particle.DUST, target, 30, 0.3, 0.3, 0.3, 0, dustOptions, true);
+        world.spawnParticle(Particle.DUST, target, 15, 0.3, 0.3, 0.3, 0, dustOptions, true);
 
-        ticksRun += 5; 
+        ticksRun += 2;
     }
 
     @Override
